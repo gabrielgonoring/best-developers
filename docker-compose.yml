@@ -1,0 +1,53 @@
+version: '3'
+
+services: 
+
+  database:
+    image: postgres:11
+    environment: 
+      POSTGRES_PASSWORD: 123
+    networks:
+      - best
+    container_name: database
+  
+  api:
+    build:
+      dockerfile: ./api-best.dockerfile
+      context: .
+    image: gabrielgonoring/best-developers-backend
+    networks:
+      - best
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://database:5432/postgres"
+      SPRING_DATASOURCE_USERNAME: "postgres"
+      SPRING_DATASOURCE_PASSWORD: 123
+      JWT_SECRET: hj1g23y2j1g3hj12g
+      JWT_EXPIRATION: 8000000
+      GITHUB_KEY: your_key
+      GITHUB_SECRET: your_secret
+    container_name: apibest
+    ports:
+      - "8080:8080"
+    depends_on: 
+      - database
+
+  front:
+    build:
+      dockerfile: ./front-best.dockerfile
+      context: .
+    image: gabrielgonoring/best-developers-frontend
+    networks:
+      - best
+    environment:
+      REACT_APP_API_DEVELOPERS_URL: "http://localhost:8080"
+    container_name: frontbest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+
+
+networks:
+  best:
+    driver: bridge
