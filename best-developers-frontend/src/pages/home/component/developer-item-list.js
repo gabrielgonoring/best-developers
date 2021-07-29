@@ -2,11 +2,6 @@ import { Component } from "react";
 
 export default class DeveloperItemList extends Component{
 
-    constructor(props){
-        super(props);
-        
-    }
-
     render(){
 
         const {developer} = this.props;

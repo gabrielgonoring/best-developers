@@ -1,6 +1,5 @@
 import { Component } from "react";
 import Header from "../../component/header";
-import Modal from "../../component/modal";
 import { getUser } from "../../service/user-information-manager";
 import { updateUser } from "../../service/user-service";
 import "./update-user-page.css"

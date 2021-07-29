@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Header from "../../component/header";
 import { getDevelopers } from "../../service/developer-service";
-import { getUser } from "../../service/user-information-manager";
 import DeveloperItemList from "./component/developer-item-list";
 
 export default class HomePage extends Component{
@@ -13,7 +12,7 @@ export default class HomePage extends Component{
             showLoading:true,
             errorMessage:'',
             page:1,
-            size:10,
+            size:30,
             developers: []
         }
     }
