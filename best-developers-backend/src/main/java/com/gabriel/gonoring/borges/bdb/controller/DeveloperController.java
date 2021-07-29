@@ -2,6 +2,7 @@ package com.gabriel.gonoring.borges.bdb.controller;
 
 import com.gabriel.gonoring.borges.bdb.dto.developer.DeveloperSummaryDTO;
 import com.gabriel.gonoring.borges.bdb.service.developer.DeveloperGitHubService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class DeveloperController {
     }
 
     @GetMapping
+    @ApiOperation("Return a list of developers")
     protected List<DeveloperSummaryDTO> searchUsersResponse(Integer page, Integer size){
         return developerService.getDevelopers(page, size);
     }
